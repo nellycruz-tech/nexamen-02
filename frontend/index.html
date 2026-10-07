@@ -3,62 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaCorp | Sistema de Gestión</title>
+  <title>MediCore Enterprise | Sistema de Gestión Farmacéutica</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
   <!-- PANTALLA DE LOGIN/REGISTRO -->
   <div id="auth-container" class="auth-wrapper">
+    <div class="auth-bg-decoration"></div>
     <div class="auth-card">
-      <div class="auth-header">
-        <i class="fas fa-pills fa-2x"></i>
-        <h1>PharmaCorp</h1>
-        <p>Sistema de Gestión Farmacéutica</p>
+      <div class="auth-brand">
+        <div class="brand-logo">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="brand-text">
+          <h1>MediCore</h1>
+          <span class="brand-tag">ENTERPRISE</span>
+        </div>
       </div>
+      <div class="auth-divider"></div>
       
       <!-- Login -->
       <form id="login-form" class="auth-form">
-        <h2>Iniciar Sesión</h2>
-        <div class="input-group">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="login-email" placeholder="Correo corporativo" required>
+        <div class="auth-heading">
+          <h2>Acceso Corporativo</h2>
+          <p>Ingresa tus credenciales institucionales</p>
         </div>
         <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="login-password" placeholder="Contraseña" required>
+          <label>Correo institucional</label>
+          <div class="input-wrapper">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="login-email" placeholder="usuario@medicore.com" required>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Ingresar al Sistema</button>
-        <p class="switch-form">¿Sin cuenta? <a href="#" id="show-register">Crear cuenta</a></p>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-sign-in-alt"></i> Acceder al Sistema
+        </button>
+        <p class="switch-form">¿Sin credenciales? <a href="#" id="show-register">Solicitar cuenta</a></p>
       </form>
 
       <!-- Register -->
       <form id="register-form" class="auth-form hidden">
-        <h2>Registro de Empleado</h2>
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" id="reg-nombre" placeholder="Nombre completo" required>
+        <div class="auth-heading">
+          <h2>Alta de Colaborador</h2>
+          <p>Registro autorizado por RR.HH.</p>
         </div>
         <div class="input-group">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="reg-email" placeholder="Correo corporativo" required>
+          <label>Nombre completo</label>
+          <div class="input-wrapper">
+            <i class="fas fa-user"></i>
+            <input type="text" id="reg-nombre" placeholder="Nombre y apellidos" required>
+          </div>
         </div>
         <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="reg-password" placeholder="Contraseña (mín. 6)" required minlength="6">
+          <label>Correo corporativo</label>
+          <div class="input-wrapper">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="reg-email" placeholder="usuario@medicore.com" required>
+          </div>
         </div>
         <div class="input-group">
-          <i class="fas fa-user-tag"></i>
-          <select id="reg-rol" required>
-            <option value="usuario">Usuario (Solo lectura)</option>
-            <option value="moderador">Moderador (Editar)</option>
-            <option value="administrador">Administrador (Control Total)</option>
-          </select>
+          <label>Contraseña</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" required minlength="6">
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar</button>
-        <p class="switch-form">¿Ya tiene cuenta? <a href="#" id="show-login">Iniciar sesión</a></p>
+        <div class="input-group">
+          <label>Nivel de acceso</label>
+          <div class="input-wrapper">
+            <i class="fas fa-user-tag"></i>
+            <select id="reg-rol" required>
+              <option value="usuario">Usuario — Solo lectura</option>
+              <option value="moderador">Moderador — Edición limitada</option>
+              <option value="administrador">Administrador — Control total</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-user-plus"></i> Registrar colaborador
+        </button>
+        <p class="switch-form">¿Ya tienes cuenta? <a href="#" id="show-login">Volver a login</a></p>
       </form>
+
+      <div class="auth-footer">
+        <p>© 2026 MediCore Enterprise — Todos los derechos reservados</p>
+      </div>
     </div>
   </div>
 
@@ -67,123 +106,243 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <i class="fas fa-pills"></i> PharmaCorp
-      </div>
-      <nav class="sidebar-nav">
-        <a href="#" class="nav-link active" data-section="catalogo"><i class="fas fa-box-open"></i> Catálogo General</a>
-        <a href="#" class="nav-link admin-only mod-only hidden" data-section="gestionar"><i class="fas fa-edit"></i> Gestionar Productos</a>
-        <a href="#" class="nav-link admin-only hidden" data-section="categorias"><i class="fas fa-tags"></i> Gestionar Categorías</a>
-      </nav>
-      <div class="sidebar-footer">
-        <div class="user-info">
-          <i class="fas fa-user-circle fa-2x"></i>
+        <div class="sidebar-brand">
+          <div class="brand-icon"><i class="fas fa-shield-alt"></i></div>
           <div>
+            <div class="brand-name">MediCore</div>
+            <div class="brand-sub">ENTERPRISE v2.6</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section-label">PRINCIPAL</div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-link active" data-section="catalogo">
+          <div class="nav-icon"><i class="fas fa-box-open"></i></div>
+          <div class="nav-text">
+            <span>Catálogo General</span>
+            <small>Inventario completo</small>
+          </div>
+        </a>
+        <a href="#" class="nav-link admin-only mod-only hidden" data-section="gestionar">
+          <div class="nav-icon"><i class="fas fa-edit"></i></div>
+          <div class="nav-text">
+            <span>Gestión de Productos</span>
+            <small>Administrar catálogo</small>
+          </div>
+        </a>
+        <a href="#" class="nav-link admin-only hidden" data-section="categorias">
+          <div class="nav-icon"><i class="fas fa-tags"></i></div>
+          <div class="nav-text">
+            <span>Categorías</span>
+            <small>Clasificación farmacéutica</small>
+          </div>
+        </a>
+      </nav>
+
+      <div class="sidebar-section-label">CUENTA</div>
+      <div class="sidebar-user">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="user-details">
             <p id="user-name" class="user-name">Usuario</p>
             <p id="user-rol" class="user-rol">Rol</p>
           </div>
         </div>
-        <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+        <button id="logout-btn" class="btn-logout">
+          <i class="fas fa-power-off"></i>
+          <span>Cerrar sesión</span>
+        </button>
       </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
       <header class="topbar">
-        <h2 id="page-title">Catálogo General</h2>
+        <div class="topbar-left">
+          <h2 id="page-title">Catálogo General</h2>
+          <div class="breadcrumb">
+            <i class="fas fa-home"></i> <span>Inicio</span> <i class="fas fa-chevron-right"></i> <span id="breadcrumb-current">Catálogo</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-date">
+            <i class="fas fa-calendar-alt"></i>
+            <span id="current-date"></span>
+          </div>
+          <div class="topbar-notif">
+            <i class="fas fa-bell"></i>
+            <span class="notif-badge">3</span>
+          </div>
+        </div>
       </header>
 
       <div class="content-area">
         <!-- Sección Catálogo (Todos) -->
         <section id="sec-catalogo" class="section active">
+          <!-- KPI Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                <i class="fas fa-pills"></i>
+              </div>
+              <div class="kpi-info">
+                <span class="kpi-value" id="kpi-total">0</span>
+                <span class="kpi-label">Productos totales</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="kpi-info">
+                <span class="kpi-value" id="kpi-stock">0</span>
+                <span class="kpi-label">En stock</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="kpi-info">
+                <span class="kpi-value" id="kpi-bajo">0</span>
+                <span class="kpi-label">Stock bajo</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                <i class="fas fa-tags"></i>
+              </div>
+              <div class="kpi-info">
+                <span class="kpi-value" id="kpi-cats">0</span>
+                <span class="kpi-label">Categorías</span>
+              </div>
+            </div>
+          </div>
+
           <div class="card">
-            <h3>Inventario de Productos</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Producto</th>
-                  <th>Categoría</th>
-                  <th>Precio</th>
-                  <th>Stock</th>
-                </tr>
-              </thead>
-              <tbody id="tabla-catalogo"></tbody>
-            </table>
+            <div class="card-header">
+              <h3><i class="fas fa-box-open"></i> Inventario de Productos</h3>
+              <div class="card-actions">
+                <div class="search-box">
+                  <i class="fas fa-search"></i>
+                  <input type="text" placeholder="Buscar producto...">
+                </div>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio Unitario</th>
+                    <th>Stock</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-catalogo"></tbody>
+              </table>
+            </div>
           </div>
         </section>
 
         <!-- Sección Gestionar (Admin/Mod) -->
         <section id="sec-gestionar" class="section hidden">
           <div class="card">
-            <h3 id="form-title">Agregar Nuevo Producto</h3>
+            <div class="card-header">
+              <h3><i class="fas fa-edit"></i> <span id="form-title">Nuevo Producto</span></h3>
+            </div>
             <form id="producto-form" class="grid-form">
               <input type="hidden" id="prod-id">
               <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" id="prod-nombre" required>
+                <label>Nombre del producto <span class="req">*</span></label>
+                <input type="text" id="prod-nombre" required placeholder="Ej: Paracetamol 500mg">
               </div>
               <div class="form-group">
-                <label>Precio (S/.)</label>
-                <input type="number" id="prod-precio" step="0.01" min="0" required>
+                <label>Categoría <span class="req">*</span></label>
+                <select id="prod-categoria" required>
+                  <option value="">Seleccionar categoría...</option>
+                </select>
               </div>
               <div class="form-group">
-                <label>Stock</label>
-                <input type="number" id="prod-stock" min="0" required>
+                <label>Precio (S/.) <span class="req">*</span></label>
+                <input type="number" id="prod-precio" step="0.01" min="0" required placeholder="0.00">
               </div>
               <div class="form-group">
-                <label>Categoría</label>
-                <select id="prod-categoria" required></select>
+                <label>Unidades en stock <span class="req">*</span></label>
+                <input type="number" id="prod-stock" min="0" required placeholder="0">
               </div>
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary" id="btn-submit-prod">Guardar</button>
-                <button type="button" class="btn btn-secondary hidden" id="btn-cancel-edit">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="btn-submit-prod">
+                  <i class="fas fa-save"></i> Guardar Producto
+                </button>
+                <button type="button" class="btn btn-secondary hidden" id="btn-cancel-edit">
+                  <i class="fas fa-times"></i> Cancelar
+                </button>
               </div>
             </form>
           </div>
           <div class="card">
-            <h3>Lista de Productos</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th>Stock</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody id="tabla-gestionar"></tbody>
-            </table>
+            <div class="card-header">
+              <h3><i class="fas fa-list"></i> Listado de Productos</h3>
+              <span class="card-badge" id="product-count">0 registros</span>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-gestionar"></tbody>
+              </table>
+            </div>
           </div>
         </section>
 
         <!-- Sección Categorías (Solo Admin) -->
         <section id="sec-categorias" class="section hidden">
           <div class="card">
-            <h3>Agregar Categoría</h3>
+            <div class="card-header">
+              <h3><i class="fas fa-plus-circle"></i> Nueva Categoría</h3>
+            </div>
             <form id="categoria-form" class="inline-form">
-              <input type="text" id="cat-nombre" placeholder="Nombre de la categoría" required>
-              <button type="submit" class="btn btn-primary">Agregar</button>
+              <input type="text" id="cat-nombre" placeholder="Nombre de la categoría farmacéutica" required>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Agregar
+              </button>
             </form>
           </div>
           <div class="card">
-            <h3>Categorías Registradas</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                </tr>
-              </thead>
-              <tbody id="tabla-categorias"></tbody>
-            </table>
+            <div class="card-header">
+              <h3><i class="fas fa-tags"></i> Categorías Registradas</h3>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-categorias"></tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-      </div> <!-- Fin content-area -->
-    </main> <!-- Fin main-content -->
-  </div> <!-- Fin dashboard-container -->
+      </div>
+    </main>
+  </div>
 
-  <!-- ⚠️ ESTA LÍNEA ES CRUCIAL: Carga el JavaScript al final -->
   <script src="app.js"></script>
 </body>
 </html>
