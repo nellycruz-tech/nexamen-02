@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'https://backend-farmacia-d90l.onrender.com/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("✅ App.js cargado correctamente");
